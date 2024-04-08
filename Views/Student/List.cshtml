@@ -1,0 +1,17 @@
+﻿@model List<Cumulative1.Models.Student>
+@{
+    ViewBag.Title = "List Of Students";
+}
+
+<h2>List of Students</h2>
+<form action="/Student/List" method="GET">
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search" />
+</form>
+
+
+@foreach (var student in Model)
+{
+    <div><a href="Show/@student.StudentId">@student.StudentFullName</a></div>
+}
+

@@ -1,0 +1,12 @@
+﻿@model Cumulative1.Models.Class
+@{
+    ViewBag.Title = "Show Class Based On ID";
+}
+
+<a class="navlink" href="/Class/List">Return To Classes</a>
+<h2>@Model.ClassName</h2>
+<ul>
+    <li>Class code: @Model.ClassCode</li>
+    <li>Start Date: @Model.StartDate.ToString("MMMM dd, yyyy")</li>
+    <li>Finish Date: @Model.FinishDate.ToString("MMMM dd, yyyy")</li>
+</ul>

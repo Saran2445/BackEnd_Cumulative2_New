@@ -1,0 +1,15 @@
+﻿@model List<Cumulative1.Models.Class>
+@{
+    ViewBag.Title = "List Of Classes";
+}
+
+<h2>List of Classes</h2>
+<form action="/Class/List" method="GET">
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search" />
+</form>
+
+@foreach (var course in Model)
+{
+    <div><a href="Show/@course.ClassId">@course.ClassName</a></div>
+}

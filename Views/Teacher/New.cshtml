@@ -1,0 +1,86 @@
+﻿@model List<Cumulative1.Models.Teacher>
+    @{
+        ViewBag.Title = "New";
+    }
+    <script>
+        window.onload = allready;
+
+        function allready()
+        {
+            var addTeacherForm = document.forms.addNewTeacher;
+            addTeacherForm.onsubmit = teacherAdded;
+            function teacherAdded()
+            {
+                var firstName = addTeacherForm.TeacherFName;
+                var lastName = addTeacherForm.TeacherLName;
+                var empNumber = addTeacherForm.EmployeeNumber;
+                var teacherHireDate = addTeacherForm.HireDate;
+                var teacherSalary = addTeacherForm.Salary;
+
+                if (firstName.value === "") {
+                    firstName.style.backgroundColor = "red";
+                    firstName.focus();
+                    return false
+                }
+                else if (lastName.value === "") {
+                    lastName.style.backgroundColor = "red";
+                    lastName.focus();
+                    return false
+                }
+                else if (empNumber.value === "") {
+                    empNumber.style.backgroundColor = "red";
+                    empNumber.focus();
+                    return false
+                }
+                else if (teacherHireDate.value === "") {
+                    teacherHireDate.style.backgroundColor = "red";
+                    teacherHireDate.focus();
+                    return false
+                }
+                else if (teacherSalary.value === "") {
+                    teacherSalary.style.backgroundColor = "red";
+                    teacherSalary.focus();
+                    return false
+                }
+            } 
+        }
+
+    </script>
+
+
+
+
+
+    <div id="containershow">
+        <nav>
+            <a class="navlink" href="/Teacher/List">Back To Teacher</a>
+        </nav>
+        <h2>New Teacher</h2>
+        <form name="addNewTeacher" method="POST" action="/Teacher/Create">
+            <div class="inputrow">
+                <label for="TeacherFName">First Name:</label>
+                <input type="text" id="TeacherFName" name="TeacherFName" />
+
+            </div>
+            <div class="inputrow">
+                <label for="TeacherLName">Last Name:</label>
+                <input type="text" id="TeacherLName" name="TeacherLName" />
+
+            </div>
+            <div class="inputrow">
+                <label for="EmployeeNumber">Employee Number:</label>
+                <input type="text" id="EmployeeNumber" name="EmployeeNumber" />
+            </div>
+            <div class="inputrow">
+                <label for="HireDate">Hire Date:</label>
+                <input type="date" id="HireDate" name="HireDate" />
+            </div>
+            <div class="inputrow">
+                <label for="Salary">Salary:</label>
+                <input type="number" id="Salary" name="Salary" step="0.01" min="0" />
+            </div>
+            <div class="inputrow">
+                <input type="submit" value="Create Teacher" />
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,12 @@
+﻿@model Cumulative1.Models.Student
+@{
+    ViewBag.Title = "Show Student Based On ID";
+}
+
+<a class="navlink" href="/Student/List">Return To Students</a>
+<h2>@Model.StudentFullName</h2>
+<ul>
+    <li>Student Number: @Model.StudentNumber</li>
+    <li>Enroll Date: @Model.EnrollDate.ToString("MMMM dd, yyyy")</li>
+
+</ul>

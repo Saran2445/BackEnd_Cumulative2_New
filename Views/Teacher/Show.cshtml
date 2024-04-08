@@ -1,0 +1,26 @@
+﻿@model Cumulative1.Models.Teacher
+@{
+    ViewBag.Title = "Show Teacher Based on ID";
+}
+
+<div id="containerShow">
+    <nav>
+        <a class="navlink" href="/Teacher/List">Return To Teachers</a>
+        <a class="dellink" href="/Teacher/DeleteConfirm/@Model.TeacherId">Delete</a>
+    </nav>
+    <h2>@Model.TeacherFName @Model.TeacherLName</h2>
+    <ul>
+        <li>Employee Number: @Model.EmployeeNumber</li>
+        <li>Salary: $@Model.Salary</li>++
+        <li>Hire Date: @Model.HireDate.ToString("MMMM dd, yyyy")</li>
+    </ul>
+    <h3>Courses</h3>
+    @if (Model.Classes != null)
+    {
+        foreach (var course in Model.Classes)
+        {
+            <p>@course.ClassName</p>
+        }
+    }
+
+</div>
