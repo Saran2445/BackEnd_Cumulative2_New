@@ -103,6 +103,7 @@ namespace Cumulative1.Controllers
                 string TeacherLname = ResultSet["teacherlname"].ToString();
                 string TeacherEmployeeNumber = ResultSet["employeenumber"].ToString();
                 DateTime TeacherHireDate = (DateTime)ResultSet["hiredate"];
+                ///string formattedDateTime = TeacherHireDate.ToString("yyyy-MM-dd");
                 decimal TeacherSalary = Convert.ToDecimal(ResultSet["salary"]);
 
                 TeacherObj.TeacherId = TeacherId;
@@ -225,6 +226,34 @@ namespace Cumulative1.Controllers
 
             Conn.Close();
 
+
+
+        }
+
+        public void UpdateTeacher(int id, [FromBody] Teacher TeacherInfo)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "update teachers set teacherfname=@TeacherFName, teacherlname=@TeacherLName, employeenumber=@EmployeeNumber, hiredate=@HireDate, salary=@Salary where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@TeacherFName", TeacherInfo.TeacherFName);
+            cmd.Parameters.AddWithValue("@TeacherLName", TeacherInfo.TeacherLName);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@HireDate", TeacherInfo.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherInfo.Salary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
 
 
         }

@@ -17,6 +17,7 @@ nav{
 }
 .navlink{
     float:left;
+    margin-right:15px;
 }
 .dellink{
     float:right;

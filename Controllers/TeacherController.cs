@@ -13,6 +13,7 @@ namespace Cumulative1.Controllers
         // GET: localhost:xx/Teacher/Index ->
         public ActionResult Index()
         {
+            //test
             //Navigates to Views/Teacher/Index.cshtml
             return View();
         }
@@ -78,6 +79,30 @@ namespace Cumulative1.Controllers
             controller.AddTeacher(NewTeacher);
 
             return RedirectToAction("List");
+        }
+
+        //GET: /Teacher/Update/{id}
+        public ActionResult Update(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher pickedTeacher = controller.FindTeacher(id);
+            return View(pickedTeacher);
+        }
+
+        //POST: /Teacher/Update/{id}
+        [HttpPost]
+        public ActionResult Update(int id, string TeacherFName, string TeacherLName, string EmployeeNumber, DateTime HireDate, decimal Salary)
+        {
+            Teacher TeacherInfo = new Teacher();
+            TeacherInfo.TeacherFName = TeacherFName;
+            TeacherInfo.TeacherLName = TeacherLName;
+            TeacherInfo.EmployeeNumber = EmployeeNumber;
+            TeacherInfo.HireDate = HireDate;
+            TeacherInfo.Salary = Salary;
+
+            TeacherDataController controller = new TeacherDataController();
+            controller.UpdateTeacher(id,TeacherInfo);
+            return RedirectToAction("Show/"+ id);
         }
     }
 }
