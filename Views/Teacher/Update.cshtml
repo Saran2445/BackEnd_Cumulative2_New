@@ -3,33 +3,80 @@
     ViewBag.Title = "Update";
 }
 
+<script>
+     window.onload = allready;
+
+     function allready()
+     {
+         var updateTeacherForm = document.forms.updateNewTeacher;
+         updateTeacherForm.onsubmit = teacherUpdated;
+         function teacherUpdated()
+         {
+             var firstName = updateTeacherForm.TeacherFName;
+             var lastName = updateTeacherForm.TeacherLName;
+             var empNumber = updateTeacherForm.EmployeeNumber;
+             var teacherHireDate = updateTeacherForm.HireDate;
+             var teacherSalary = updateTeacherForm.Salary;
+
+             if (firstName.value === "") {
+                 firstName.style.backgroundColor = "red";
+                 firstName.focus();
+                 return false
+             }
+             else if (lastName.value === "") {
+                 lastName.style.backgroundColor = "red";
+                 lastName.focus();
+                 return false
+             }
+             else if (empNumber.value === "") {
+                 empNumber.style.backgroundColor = "red";
+                 empNumber.focus();
+                 return false
+             }
+             else if (teacherHireDate.value === "") {
+                 teacherHireDate.style.backgroundColor = "red";
+                 teacherHireDate.focus();
+                 return false
+             }
+             else if (teacherSalary.value === "") {
+                 teacherSalary.style.backgroundColor = "red";
+                 teacherSalary.focus();
+                 return false
+             }
+         }
+     }
+
+</script>
+
+
+
 <div id="containershow">
     <nav>
         <a class="navlink" href="/Teacher/Show/@Model.TeacherId">Back</a>
     </nav>
     <h2>Update Teacher</h2>
-    <form name="addNewTeacher" method="POST" action="/Teacher/Update/@Model.TeacherId">
+    <form name="updateNewTeacher" method="POST" action="/Teacher/Update/@Model.TeacherId">
         <div class="inputrow">
             <label for="TeacherFName">First Name:</label>
-            <input type="text" id="TeacherFName" name="TeacherFName" value="@Model.TeacherFName"/>
+            <input type="text" id="TeacherFName" name="TeacherFName" value="@Model.TeacherFName" />
 
         </div>
         <div class="inputrow">
             <label for="TeacherLName">Last Name:</label>
-            <input type="text" id="TeacherLName" name="TeacherLName" value="@Model.TeacherLName"/>
+            <input type="text" id="TeacherLName" name="TeacherLName" value="@Model.TeacherLName" />
 
         </div>
         <div class="inputrow">
             <label for="EmployeeNumber">Employee Number:</label>
-            <input type="text" id="EmployeeNumber" name="EmployeeNumber" value="@Model.EmployeeNumber"/>
+            <input type="text" id="EmployeeNumber" name="EmployeeNumber" value="@Model.EmployeeNumber" />
         </div>
         <div class="inputrow">
             <label for="HireDate">Hire Date:</label>
-            <input type="date" id="HireDate" name="HireDate" value="@Model.HireDate.ToString("yyyy'-'MM'-'dd")"/>
+            <input type="date" id="HireDate" name="HireDate" value="@Model.HireDate.ToString("yyyy'-'MM'-'dd")" />
         </div>
         <div class="inputrow">
             <label for="Salary">Salary:</label>
-            <input type="number" id="Salary" name="Salary" step="0.01" min="0" value="@Model.Salary"/>
+            <input type="number" id="Salary" name="Salary" step="0.01" min="0" value="@Model.Salary" />
         </div>
         <div class="inputrow">
             <input type="submit" value="Update Teacher" />

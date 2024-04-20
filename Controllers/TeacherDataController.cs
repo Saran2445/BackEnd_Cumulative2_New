@@ -229,7 +229,9 @@ namespace Cumulative1.Controllers
 
 
         }
-
+        [HttpPost]
+        [EnableCors(origins: "*", methods: "*" , headers:"*")]
+        [Route("api/TeacherData/UpdateTeacher/{id}")]
         public void UpdateTeacher(int id, [FromBody] Teacher TeacherInfo)
         {
             //Create an instance of a connection
